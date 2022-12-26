@@ -1,25 +1,66 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./styles/index.scss";
+import Header from "./component/header";
+import { Rule, Modal } from "./component/modal";
+import GamePanel from "./component/game-panel";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  state = {
+    score: 0,
+    modal: false,
+    step: 1,
+    pick: ["none", "none"],
+  };
+
+  handleModal = () => {
+    this.setState({ modal: !this.state.modal });
+  };
+
+  handleScore = (result) => {
+    let newScore;
+    if (result === "player") {
+      newScore = this.state.score + 1;
+      this.setState({ score: newScore });
+    } else if (result === "cpu") {
+      newScore = this.state.score - 1;
+      newScore >= 0 && this.setState({ score: newScore });
+    }
+  };
+
+  handlePick = (unit, value) => {
+    if (this.state.step > 2) {
+      return;
+    }
+    if (unit === "player") {
+      let newPick = [value, "none"];
+      this.setState({ pick: newPick });
+    } else {
+      let newPick = this.state.pick.slice();
+      newPick.splice(1, 1, value);
+      this.setState({ pick: newPick });
+    }
+  };
+
+  handleStep = () => {
+    let newStep = this.state.step + 1;
+    newStep = newStep > 4 ? 1 : newStep;
+    this.setState({ step: newStep });
+  };
+
+  render() {
+    return (
+      <div>
+        <Header score={this.state.score} />
+        <GamePanel
+          handleScore={this.handleScore}
+          pick={this.state.pick}
+          step={this.state.step}
+          handlePick={this.handlePick}
+          handleStep={this.handleStep}
+        />
+        <Rule handleModal={this.handleModal} />
+        {this.state.modal && <Modal handleModal={this.handleModal} />}
+      </div>
+    );
+  }
 }
-
-export default App;
