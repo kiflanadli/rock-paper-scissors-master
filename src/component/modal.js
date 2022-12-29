@@ -1,6 +1,6 @@
 export function Rule(props) {
   return (
-    <div>
+    <div className="rules-btn">
       <button onClick={props.handleModal}>rules</button>
     </div>
   );

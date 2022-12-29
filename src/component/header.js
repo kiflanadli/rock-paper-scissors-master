@@ -1,10 +1,10 @@
 export default function Header(props) {
   return (
-    <header>
+    <header className="header-section">
       <img src="./assets/logo-bonus.svg" alt="title" />
-      <div>
-        <span>score: </span>
-        {props.score}
+      <div className="score-container">
+        <span>score</span>
+        <p className="score-text">{props.score}</p>
       </div>
     </header>
   );

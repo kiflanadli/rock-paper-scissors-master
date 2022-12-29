@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap");
+
+$sc-mobile: 375px;
+$sc-desktop: 1366px;
+
+$fw-regular: 400;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+$fs-1: 14px;
+$fs-2: 16px;
+
+$radius: 14px;
+
+$space-s: 10px;
+$space-m: $space-s * 2;
+$space-l: $space-s * 3;
+$space-xl: $space-s * 4;
+
+$text-light: #fff;
+$text-dark: hsl(229, 25%, 31%);
+$text-score: hsl(229, 64%, 46%);
+$header-outline: hsl(217, 16%, 45%);
+
+$scissors-gradient: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
+$paper-gradient: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
+$rock-gradient: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
+$lizard-gradient: hsl(261, 73%, 60%), hsl(261, 72%, 63%);
+$cyan-gradient: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
+$background-gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
+
+@mixin linear-gradient($params) {
+  background: linear-gradient($params);
+}
+@mixin radial-gradient($params) {
+  background: radial-gradient(circle at top center, $params);
+}
+
+@mixin mx($params) {
+  margin-left: $params;
+  margin-right: $params;
+}
+
+@mixin box($params) {
+  width: $params;
+  height: $params;
+}
+
+* {
+  //   border: 1px solid red;
+  box-sizing: border-box;
+  font-family: "Barlow Semi Condensed", sans-serif;
+  text-transform: uppercase;
+}
+
+body {
+  margin: 0;
+  font-size: $fs-1;
+  font-weight: $fw-semibold;
+  color: $text-light;
+  letter-spacing: 0.3ch;
+}
+
+.main-container {
+  @include radial-gradient($background-gradient);
+  min-height: 100vh;
+  padding: $space-m;
+  text-align: center;
+  position: relative;
+  .main,
+  .header-section {
+    @include mx(auto);
+  }
+  .header-section {
+    max-width: 75ch;
+  }
+  .main {
+    max-width: 60ch;
+  }
+}
+.pentagon {
+  background-image: url("/assets/bg-pentagon.svg");
+  background-repeat: no-repeat;
+  background-size: 65%;
+  background-position: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: $space-m;
+  > :nth-child(1) {
+    grid-area: 1 / 1;
+    translate: 50% 15%;
+  }
+  > :nth-child(2) {
+    grid-area: 2 / 1;
+    translate: -10% -10%;
+  }
+  > :nth-child(3) {
+    grid-area: 2 / 2;
+    translate: 10% -10%;
+  }
+  > :nth-child(4) {
+    grid-area: 3 / 1;
+    translate: 15%;
+  }
+  > :nth-child(5) {
+    grid-area: 3 / 2;
+    translate: -15%;
+  }
+}
+.pick-btn {
+  @include box(9em);
+  border-radius: 50%;
+  position: relative;
+  background-clip: padding-box;
+  $border-pick: 1em;
+  border: $border-pick solid transparent;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -$border-pick;
+    border-radius: inherit;
+    background: linear-gradient($cyan-gradient);
+  }
+  $hands: (
+    scissors: $scissors-gradient,
+    paper: $paper-gradient,
+    rock: $rock-gradient,
+    lizard: $lizard-gradient,
+  );
+  @each $key, $hand in $hands {
+    &.#{$key}::before {
+      background: linear-gradient($hand);
+    }
+  }
+}
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid $header-outline;
+  border-radius: $radius;
+  padding: $space-m;
+  margin-bottom: $space-s;
+}
+
+.score-container {
+  background-color: white;
+  color: $text-score;
+  border-radius: $radius / 2;
+  padding: $space-s $space-xl;
+}
+.score-text {
+  font-size: 4.5em;
+  margin: 0;
+  color: $text-dark;
+}
+
+.rules-btn {
+  position: absolute;
+  right: $space-l;
+  bottom: $space-l;
+}

@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import calculateWinner from "../calculateWinner";
 
 export default class GamePanel extends Component {
+  render() {
+    return (
+      <main className="main">
+        {this.props.step <= 1 ? this.display(PreStart) : this.display(DidStart)}
+      </main>
+    );
+  }
+
   shouldComponentUpdate(prevP) {
     return prevP.step === this.props.step ? false : true;
   }
@@ -14,14 +22,6 @@ export default class GamePanel extends Component {
       step={this.props.step}
     />
   );
-
-  render() {
-    return (
-      <main>
-        {this.props.step <= 1 ? this.display(PreStart) : this.display(DidStart)}
-      </main>
-    );
-  }
 
   componentDidUpdate() {
     if (this.props.step === 4) {
@@ -42,7 +42,9 @@ function PreStart({ handleStep, handlePick }) {
       key={value}
     />
   );
-  return <>{hands.map((hand) => pickOption(hand))}</>;
+  return (
+    <div className="pentagon">{hands.map((hand) => pickOption(hand))}</div>
+  );
 }
 
 function DidStart({ handleStep, handlePick, pick, step }) {
@@ -58,13 +60,13 @@ function DidStart({ handleStep, handlePick, pick, step }) {
     result = calculateWinner(pick);
   }
   return (
-    <>
+    <div>
       <div>you picked</div>
       <Pick value={player} />
       <div>the house picked</div>
       {cpu !== "none" ? <Pick value={cpu} /> : <div>loading...</div>}
       {step === 4 && <Result handleStep={handleStep} result={result} />}
-    </>
+    </div>
   );
 }
 
@@ -75,11 +77,11 @@ function Pick({ handlePick, handleStep, value }) {
     handleStep();
   }
   return (
-    <button onClick={handleClick}>
-      <div>
+    <div>
+      <button onClick={handleClick} className={`pick-btn ${value}`}>
         <img src={`./assets/icon-${value}.svg`} alt="icon pick" />
-      </div>
-    </button>
+      </button>
+    </div>
   );
 }
 
