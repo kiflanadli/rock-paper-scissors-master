@@ -12,6 +12,23 @@ export default class App extends Component {
     pick: ["none", "none"],
   };
 
+  render() {
+    return (
+      <div className="main-container">
+        <Header score={this.state.score} />
+        <GamePanel
+          handleScore={this.handleScore}
+          pick={this.state.pick}
+          step={this.state.step}
+          handlePick={this.handlePick}
+          handleStep={this.handleStep}
+        />
+        <Rule handleModal={this.handleModal} />
+        {this.state.modal && <Modal handleModal={this.handleModal} />}
+      </div>
+    );
+  }
+
   handleModal = () => {
     this.setState({ modal: !this.state.modal });
   };
@@ -46,21 +63,4 @@ export default class App extends Component {
     newStep = newStep > 4 ? 1 : newStep;
     this.setState({ step: newStep });
   };
-
-  render() {
-    return (
-      <div>
-        <Header score={this.state.score} />
-        <GamePanel
-          handleScore={this.handleScore}
-          pick={this.state.pick}
-          step={this.state.step}
-          handlePick={this.handlePick}
-          handleStep={this.handleStep}
-        />
-        <Rule handleModal={this.handleModal} />
-        {this.state.modal && <Modal handleModal={this.handleModal} />}
-      </div>
-    );
-  }
 }
