@@ -43,7 +43,9 @@ function PreStart({ handleStep, handlePick }) {
     />
   );
   return (
-    <div className="pentagon">{hands.map((hand) => pickOption(hand))}</div>
+    <div className="pentagon pick-btn-pointer">
+      {hands.map((hand) => pickOption(hand))}
+    </div>
   );
 }
 
@@ -57,29 +59,53 @@ function DidStart({ handleStep, handlePick, pick, step }) {
       handleStep();
     }, 1500);
   } else {
-    result = calculateWinner(pick);
+    result = calculateWinner(pick); // 'player' || 'cpu'
   }
   return (
-    <div>
-      <div>you picked</div>
-      <Pick value={player} />
-      <div>the house picked</div>
-      {cpu !== "none" ? <Pick value={cpu} /> : <div>loading...</div>}
+    <div className="deck-layout">
+      <div>
+        <div className="pick-label">you picked</div>
+        <Pick hand="player" value={player} result={result} />
+      </div>
       {step === 4 && <Result handleStep={handleStep} result={result} />}
+      <div>
+        <div className="pick-label">the house picked</div>
+        {cpu !== "none" ? (
+          <Pick hand="cpu" value={cpu} result={result} />
+        ) : (
+          <div className="pick-load"></div>
+        )}
+      </div>
     </div>
   );
 }
 
-function Pick({ handlePick, handleStep, value }) {
+function Pick({
+  handlePick,
+  handleStep,
+  value,
+  hand = "hand",
+  result = "result",
+}) {
   function handleClick() {
     if (!handlePick) return;
     handlePick("player", value);
     handleStep();
   }
+  let resultStyle = "";
+  if (hand === result) {
+    resultStyle = "win";
+  }
   return (
     <div>
-      <button onClick={handleClick} className={`pick-btn ${value}`}>
+      <button
+        onClick={handleClick}
+        className={`pick-btn ${value} ${resultStyle}`}
+      >
         <img src={`./assets/icon-${value}.svg`} alt="icon pick" />
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   );
@@ -95,9 +121,11 @@ function Result({ handleStep, result }) {
     renderResult = "draw";
   }
   return (
-    <div>
+    <div className="result">
       <p>{renderResult}</p>
-      <button onClick={handleStep}>play again</button>
+      <button onClick={handleStep} className="replay-btn element">
+        play again
+      </button>
     </div>
   );
 }
