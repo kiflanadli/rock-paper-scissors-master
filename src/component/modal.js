@@ -1,7 +1,9 @@
 export function Rule(props) {
   return (
-    <div className="rules-btn">
-      <button onClick={props.handleModal}>rules</button>
+    <div className="rules-btn-container">
+      <button onClick={props.handleModal} className="rules-btn element">
+        rules
+      </button>
     </div>
   );
 }
