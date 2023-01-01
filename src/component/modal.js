@@ -10,12 +10,18 @@ export function Rule(props) {
 
 export function Modal(props) {
   return (
-    <div>
-      <h2>rules</h2>
-      <img src="./assets/image-rules-bonus.svg" alt="rules" />
-      <button onClick={props.handleModal}>
-        <img src="./assets/icon-close.svg" alt="close" />
-      </button>
+    <div className="rules-modal-container">
+      <div className="rules-modal">
+        <h2 className="rules-title">rules</h2>
+        <img
+          src="./assets/image-rules-bonus.svg"
+          alt="rules"
+          className="rules-content"
+        />
+        <button onClick={props.handleModal} className="close-modal">
+          <img src="./assets/icon-close.svg" alt="close" />
+        </button>
+      </div>
     </div>
   );
 }

@@ -41,7 +41,7 @@
     left: 0;
     opacity: 0.1;
     border-radius: inherit;
-    background-color: white;
+    background-color: $bg-light;
     @include box(100%);
     scale: 0;
     transition: scale 0.5s;
@@ -85,7 +85,7 @@
 
 .pick-load {
   @include mx(auto);
-  background-color: hsl(237, 49%, 15%);
+  background-color: $bg-dark;
   opacity: 0.7;
 }
 
@@ -98,7 +98,7 @@
 
 .score-container,
 .replay-btn {
-  background-color: white;
+  background-color: $bg-light;
   border: unset;
 }
 
@@ -116,7 +116,7 @@
 }
 
 .rules-btn {
-  border: 1px solid $text-light;
+  border: 1px solid $bg-light;
   background-color: unset;
   color: $text-light;
 }
@@ -125,4 +125,18 @@
   font-size: 4.5em;
   margin: 0;
   color: $text-dark;
+}
+
+.rules-modal {
+  .close-modal {
+    background-color: unset;
+    border: unset;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+  .rules-title {
+    text-align: left;
+    margin: 0;
+  }
 }
