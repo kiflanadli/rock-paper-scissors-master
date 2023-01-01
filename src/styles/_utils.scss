@@ -1,0 +1,45 @@
+$sc-mobile: 375px;
+$sc-desktop: 1366px;
+
+$fw-regular: 400;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+$fs-1: 14px;
+$fs-2: 16px;
+
+$radius: 14px;
+
+$space-s: 10px;
+$space-m: $space-s * 2;
+$space-l: $space-s * 3;
+$space-xl: $space-s * 4;
+
+$text-light: #fff;
+$text-dark: hsl(229, 25%, 31%);
+$text-score: hsl(229, 64%, 46%);
+$header-outline: hsl(217, 16%, 45%);
+
+$scissors-gradient: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
+$paper-gradient: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
+$rock-gradient: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
+$lizard-gradient: hsl(261, 73%, 60%), hsl(261, 72%, 63%);
+$cyan-gradient: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
+$background-gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
+
+@mixin linear-gradient($params) {
+  background: linear-gradient($params);
+}
+@mixin radial-gradient($params) {
+  background: radial-gradient(circle at top center, $params);
+}
+
+@mixin mx($params) {
+  margin-left: $params;
+  margin-right: $params;
+}
+
+@mixin box($params) {
+  width: $params;
+  height: $params;
+}

@@ -1,0 +1,91 @@
+.main-container {
+  @include radial-gradient($background-gradient);
+  min-height: 100vh;
+  padding: $space-m;
+  overflow-x: hidden;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  .main,
+  .header-section {
+    @include mx(auto);
+  }
+  .header-section {
+    max-width: 75ch;
+  }
+  .main {
+    &:has(.pentagon) {
+      max-width: 60ch;
+    }
+    &:has(.deck-layout) {
+      max-width: 100ch;
+    }
+  }
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid $header-outline;
+  border-radius: $radius;
+  padding: $space-m;
+  margin-bottom: $space-s;
+}
+
+.pentagon {
+  background-image: url("/assets/bg-pentagon.svg");
+  background-repeat: no-repeat;
+  background-size: 65%;
+  background-position: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: $space-m;
+  > :nth-child(1) {
+    grid-area: 1 / 1;
+    translate: 50% 15%;
+  }
+  > :nth-child(2) {
+    grid-area: 2 / 1;
+    translate: -10% -10%;
+  }
+  > :nth-child(3) {
+    grid-area: 2 / 2;
+    translate: 10% -10%;
+  }
+  > :nth-child(4) {
+    grid-area: 3 / 1;
+    translate: 15%;
+  }
+  > :nth-child(5) {
+    grid-area: 3 / 2;
+    translate: -15%;
+  }
+}
+
+.deck-layout {
+  padding-top: $space-l;
+  display: flex;
+  justify-content: center;
+  gap: $space-xl;
+  .result {
+    align-self: center;
+    font-size: 2.5em;
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .pick-label {
+    padding-bottom: $space-l;
+  }
+  > * {
+    flex: 1 1 20%;
+  }
+}
+
+.rules-btn-container {
+  position: absolute;
+  right: $space-l;
+  bottom: $space-l;
+}
