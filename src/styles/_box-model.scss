@@ -184,12 +184,13 @@
       display: flex;
       flex-wrap: wrap;
       align-content: space-around;
-      * {
-        flex: 1 0 100%;
-        text-align: center !important;
-      }
+      justify-content: center;
       .rules-title {
+        text-align: center;
         font-size: 3em;
+      }
+      .rules-content {
+        width: 100%;
       }
       .close-modal > img {
         @include box(2em);
