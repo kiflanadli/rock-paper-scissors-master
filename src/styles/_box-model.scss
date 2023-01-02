@@ -11,14 +11,14 @@
     @include mx(auto);
   }
   .header-section {
-    max-width: 75ch;
+    max-width: 37.5rem;
   }
   .main {
     &:has(.pentagon) {
-      max-width: 60ch;
+      max-width: 30rem;
     }
     &:has(.deck-layout) {
-      max-width: 110ch;
+      max-width: 55rem;
     }
   }
   @media screen and (min-width: ($sc-mobile + 1)) and (max-width: $sc-tablet) {
@@ -100,7 +100,7 @@
 }
 
 .deck-layout {
-  padding-top: $space-l;
+  padding-top: $space-v-l;
   display: flex;
   justify-content: center;
   gap: $space-xl;
