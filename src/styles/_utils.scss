@@ -25,6 +25,10 @@ $bg-dark: hsl(237, 49%, 15%);
 $bg-dark-transparent: hsla(237, 49%, 15%, 0.7);
 $bg-light: #fbfbfb;
 
+$shadow-1: 0px 0.3em 1px 2px #9494948a inset;
+$shadow-2: 0px -0.3em 1px 2px #6666668a inset;
+$shadow-3: 0px 0.3em 5px #3a3a3a8a;
+
 $scissors-gradient: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
 $paper-gradient: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
 $rock-gradient: hsl(349, 71%, 52%), hsl(349, 70%, 56%);

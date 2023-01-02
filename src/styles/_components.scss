@@ -96,6 +96,13 @@
   }
 }
 
+.pick-btn {
+  box-shadow: $shadow-1;
+  &::after {
+    box-shadow: $shadow-2;
+  }
+}
+
 .pick-load {
   @include mx(auto);
   background-color: $bg-dark;
