@@ -3,11 +3,15 @@
   font-family: "Barlow Semi Condensed", sans-serif;
   text-transform: uppercase;
 }
-
+html {
+  font-size: $fs-1;
+}
 body {
   margin: 0;
-  font-size: $fs-1;
   font-weight: $fw-semibold;
   color: $text-light;
   letter-spacing: 0.3ch;
+}
+button {
+  font-size: 1rem;
 }

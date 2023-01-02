@@ -1,4 +1,5 @@
-$sc-mobile: 375px;
+$sc-mobile: 667px;
+$sc-tablet: 1024px;
 $sc-desktop: 1366px;
 
 $fw-regular: 400;
@@ -45,5 +46,6 @@ $background-gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
 
 @mixin box($params) {
   width: $params;
-  height: $params;
+  height: auto;
+  aspect-ratio: 1;
 }
