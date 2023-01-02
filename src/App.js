@@ -5,12 +5,20 @@ import { Rule, Modal } from "./component/modal";
 import GamePanel from "./component/game-panel";
 
 export default class App extends Component {
-  state = {
-    score: 0,
-    modal: false,
-    step: 1,
-    pick: ["none", "none"],
-  };
+  constructor(props) {
+    super(props);
+    const cachedScore = JSON.parse(localStorage.getItem("score"));
+    this.state = {
+      score: cachedScore || 0,
+      modal: false,
+      step: 1,
+      pick: ["none", "none"],
+    };
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem("score", JSON.stringify(this.state.score));
+  }
 
   render() {
     return (
