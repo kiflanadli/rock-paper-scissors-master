@@ -126,7 +126,7 @@
     }
     div:has(.pick-label) {
       display: flex;
-      flex-wrap: wrap-reverse;
+      flex-direction: column-reverse;
       gap: $space-l;
       > * {
         flex-grow: 1;

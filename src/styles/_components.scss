@@ -76,6 +76,7 @@
     }
     @media screen and (max-width: $sc-mobile) {
       @include box(100%);
+      max-width: 25ch;
       $border-pick-post_start: 1.2em;
       border-width: $border-pick-post_start;
       &::after {
