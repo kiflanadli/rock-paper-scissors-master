@@ -4,8 +4,9 @@ import { PreStart, DidStart } from "./game-steps";
 
 export default class GamePanel extends Component {
   render() {
+    const panelStyle = this.props.step <= 1 ? "pre-start" : "did-start";
     return (
-      <main className="main">
+      <main className={`main ${panelStyle}`}>
         {this.props.step <= 1 ? this.display(PreStart) : this.display(DidStart)}
       </main>
     );

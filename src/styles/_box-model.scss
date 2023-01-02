@@ -14,10 +14,10 @@
     max-width: 37.5rem;
   }
   .main {
-    &:has(.pentagon) {
+    &.pre-start {
       max-width: 30rem;
     }
-    &:has(.deck-layout) {
+    &.did-start {
       max-width: 55rem;
     }
   }
