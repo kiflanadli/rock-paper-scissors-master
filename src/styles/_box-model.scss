@@ -21,6 +21,11 @@
       max-width: 110ch;
     }
   }
+  @media screen and (min-width: ($sc-mobile + 1)) and (max-width: $sc-tablet) {
+    .main {
+      margin-top: $space-xl * 2;
+    }
+  }
   @media screen and (max-width: $sc-mobile) {
     display: flex;
     flex-wrap: wrap;
@@ -112,7 +117,7 @@
   > * {
     flex: 1 1 20%;
   }
-  @media screen and (max-width: $sc-mobile) {
+  @media screen and (max-width: $sc-tablet) {
     padding-top: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
