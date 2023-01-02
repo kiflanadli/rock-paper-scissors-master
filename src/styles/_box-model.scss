@@ -154,10 +154,16 @@
   width: 100%;
   height: 100%;
   z-index: 3;
-  background-color: $bg-dark-transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  .modal-bg {
+    background-color: $bg-dark-transparent;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
   .rules-modal {
     border-radius: $radius / 2;
     background-color: $bg-light;

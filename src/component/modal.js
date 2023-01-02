@@ -11,6 +11,7 @@ export function Rule(props) {
 export function Modal(props) {
   return (
     <div className="rules-modal-container">
+      <div onClick={props.handleModal} className="modal-bg"></div>
       <div className="rules-modal">
         <h2 className="rules-title">rules</h2>
         <img
