@@ -1,4 +1,4 @@
-# Project using React JS
+# Rock Paper Scissors game (plus Spock & Lizard) - Frontend Mentor's Challenge
 
 This project is a solution for [Frontend Mentor's challenge](https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH).
 
